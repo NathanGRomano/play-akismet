@@ -1,0 +1,54 @@
+<configuration>
+    
+  <conversionRule conversionWord="coloredLevel" converterClass="play.api.Logger$ColoredLevel" />
+
+  <appender name="Rolling-file-app" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <append>true</append>
+  
+     <file>${log_path}/app.log</file>
+	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+		<fileNamePattern>logs/app.log.%d{yyyy-MM-dd_HH}</fileNamePattern>
+		<maxHistory>30</maxHistory>
+	</rollingPolicy>
+
+	<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+		<layout class="com.manta.logback.core.customlayout.SimpleJsonLayout" />
+	    </encoder>
+
+   </appender>
+
+  <appender name="Rolling-file-access" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <append>true</append>
+  
+     <file>${log_path}/access.log</file>
+	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+		<fileNamePattern>logs/access.log.%d{yyyy-MM-dd_HH}</fileNamePattern>
+		<maxHistory>30</maxHistory>
+	</rollingPolicy>
+
+	<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+		<layout class="com.manta.logback.core.customlayout.SimpleJsonLayoutAccess" />
+	    </encoder>
+
+   </appender>
+
+ <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%coloredLevel %logger{15} - %message%n%xException{5}</pattern>
+    </encoder>
+  </appender>
+
+
+	  <logger name="access-logger" level="INFO" additivity="false">
+	    <appender-ref ref="Rolling-file-access" />
+	</logger>
+	<logger name="application" level="INFO">
+	    <appender-ref ref="Rolling-file-app" />
+	</logger>
+  <root level="INFO">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="Rolling-file-app" />
+
+  </root>
+  
+</configuration>
