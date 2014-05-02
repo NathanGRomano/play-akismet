@@ -1,5 +1,7 @@
 package com.manta.akismet;
 
+import java.io.IOException;
+
 import play.libs.F.Callback;
 import play.libs.F.Promise;
 import play.libs.WS.Response;
@@ -17,7 +19,7 @@ public class Checker extends Call {
 	 * @return Promise<Response>
 	 */
 	
-	public Promise<Response> check (final Content content, final Callback<String> cb) {
+	public Promise<Response> check (final Content content, final Callback<String> cb) throws IOException {
 		return invoke(content, cb);
 	}
 

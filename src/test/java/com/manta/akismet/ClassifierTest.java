@@ -3,6 +3,7 @@ package com.manta.akismet;
 import static org.junit.Assert.*;
 
 import java.io.UnsupportedEncodingException;
+import java.io.IOException;
 
 import org.junit.Test;
 
@@ -18,7 +19,7 @@ public class ClassifierTest {
 	private String result;
 
 	@Test
-	public void testClassify () throws InterruptedException, UnsupportedEncodingException {
+	public void testClassify () throws InterruptedException, UnsupportedEncodingException, IOException {
 		final ClassifierTest self = this;
 		Classifier classifier = new Classifier();
 		Content content = Content.makeTestContent(Classification.SPAM);

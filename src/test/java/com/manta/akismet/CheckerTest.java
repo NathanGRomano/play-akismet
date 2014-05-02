@@ -10,13 +10,15 @@ import com.manta.akismet.Content;
 
 import play.libs.F.Callback;
 
+import java.io.IOException;
+
 public class CheckerTest {
 	
 	private final Object lock = new Object();
 	private String result;
 
 	@Test
-	public void testCheck () throws InterruptedException {
+	public void testCheck () throws InterruptedException, IOException {
 
 		final CheckerTest self = this;
 		Checker checker = new Checker();

@@ -1,5 +1,6 @@
 package com.manta.akismet;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,9 +28,10 @@ public class Classifier extends Call {
 	 * @param cb
 	 * @return Promise<Response>
 	 * @throws UnsupportedEncodingException
+	 * @throws IOExpcetion
 	 */
 
-	public Promise<Response> classify (final Content content, final Classification classification, final Callback<String> cb) throws UnsupportedEncodingException {
+	public Promise<Response> classify (final Content content, final Classification classification, final Callback<String> cb) throws UnsupportedEncodingException, IOException {
 		return invoke(content, classification, cb);
 	}
 

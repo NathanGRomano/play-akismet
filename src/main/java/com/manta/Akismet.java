@@ -1,5 +1,6 @@
 package com.manta;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 import play.libs.F.Callback;
@@ -37,7 +38,7 @@ public class Akismet {
 	 * @return Promise<Response>
 	 */
 	
-	static public Promise<Response> check (final Content content, final Callback<Classification> cb) {
+	static public Promise<Response> check (final Content content, final Callback<Classification> cb) throws IOException {
 		return checker.check(content, new Callback<String> () {				
 			public void invoke (String in) throws Throwable {
 				cb.invoke(content.getClassification());
@@ -54,7 +55,7 @@ public class Akismet {
 	 * @throws UnsupportedEncodingException 
 	 */
 
-	static public Promise<Response> classify (final Content content, final Classification classification, final Callback<Classification> cb) throws UnsupportedEncodingException {
+	static public Promise<Response> classify (final Content content, final Classification classification, final Callback<Classification> cb) throws UnsupportedEncodingException, IOException {
 		return classifier.classify(content, classification, new Callback<String> () {				
 			public void invoke (String in) throws Throwable {
 				cb.invoke(content.getClassification());

@@ -3,5 +3,7 @@ install: mvn install -B --settings .travis/settings.xml
 script: .travis/mvn_deploy.sh
 env:
   global:
+  - AWS_ACCESS_KEY_ID=AKIAJ55PIQSUDDSASZFQ
   - secure: gNHYCBxQNY+zzAr6XNhMXDa9x00g3weNKEH6XjXTFCWXveaGh1tkg5I7Sdu1R0U4mDlJkpycLU95RBqZ7TEtFj1hvq3EVZ1chDJ7MWsYkaECdBxUVXt/sWBHRkURfLfbdz04f596wabaSDZ6ynY7ohOTjyKAxwh0nFc8evY8Yuk=
   - secure: OFQ2GKOSTOEdwDsWMeMQR4r0RcBndd9G8pHZ/hB6QwDnoOBC9gemhylEY0p3Mc8y2geoHCYbtbrWk/LgwGLD9PmlJxvKgFIxPJs/vjsitsLI71iew/lwiTgL7xeHxp0XUITNv1TI2tH+BuyFnVvmrKRU405w20jPDbAwKlLd244=
+  - secure: CMJvNpxxuVk3lBK6nZVgH6XB8UpaEJj7YQJV5HvebVjgi/NTYPnyiPwtXQRh5VmnkSX9z1xzLp54kQ57eBlKfCLJAYCkvtCbdaQLsj/Wz0B4LTZ+griyBkjzujGAWqGS65egrCkJOKKwqMhM+Hp2xmWEqkPKwCoTiq5FuxKsMw8=

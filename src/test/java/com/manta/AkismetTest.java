@@ -3,6 +3,7 @@ package com.manta;
 import static org.junit.Assert.*;
 
 import java.io.UnsupportedEncodingException;
+import java.io.IOException;
 
 import org.junit.Test;
 
@@ -37,14 +38,14 @@ public class AkismetTest {
 	}
 
   @Test 
-  public void testSetKey () {
+  public void testSetKey () throws IOException {
     String key = Key.get();
     Akismet.setKey(key);
     assertTrue(Key.get().equals(key));
   }
 
 	@Test
-	public void testIsSpam () throws InterruptedException {
+	public void testIsSpam () throws InterruptedException, IOException {
 		final AkismetTest self = this;
 		Content content = getSpam();
 		Akismet.check(content, new Callback<Classification> () {	
@@ -61,7 +62,7 @@ public class AkismetTest {
 	}
 	
 	@Test
-	public void testIsHam () throws InterruptedException {
+	public void testIsHam () throws InterruptedException, IOException {
 		final AkismetTest self = this;
 		Content content = getHam();
 		Akismet.check(content, new Callback<Classification> () {	
@@ -78,7 +79,7 @@ public class AkismetTest {
 	}
 	
 	@Test
-	public void testSubmitSpam () throws InterruptedException, UnsupportedEncodingException {
+	public void testSubmitSpam () throws InterruptedException, UnsupportedEncodingException, IOException {
 		final AkismetTest self = this;
 		Content content = getSpam(); 
 		Akismet.classify(content, Classification.SPAM, new Callback<Classification> () {	
@@ -95,7 +96,7 @@ public class AkismetTest {
 	}
 	
 	@Test
-	public void testSubmitHam () throws InterruptedException, UnsupportedEncodingException {
+	public void testSubmitHam () throws InterruptedException, UnsupportedEncodingException, IOException {
 		final AkismetTest self = this;
 		Content content = getHam();
 		Akismet.classify(content, Classification.HAM, new Callback<Classification> () {	
