@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/mantacode/play-akismet.svg?branch=master)](https://travis-ci.org/mantacode/play-akismet)
 
-# Play Akismet # 
+# Play Akismet
 
 The purpose of this repo is to provide Java Play developers the ability to interface with the Akismet API:
 
@@ -144,8 +144,13 @@ Akismet.classify(content, Classification.SPAM, new Callback<Classification> () {
 The ability to "verify" your API key is not present in this binding.
 
 Steps would be to:
+
 1) Write a test for com.manta.Akismet#verify(String, Callback<Boolean> cb)
+
 2) Write a test for a class com.manta.akismet.Verifier#verify(String key, Callback<Boolean> cb)
+
 3) Verifier should be derived from com.manta.akismet.Call
+
 4) Implment the Verifier
+
 5) Implement the Akismet#verify method to use the verifier
